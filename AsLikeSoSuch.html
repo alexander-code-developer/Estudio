@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grammar Workshop · AS vs LIKE · SO vs SUCH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #eef2f7;
+            padding: 1.8rem 1.2rem;
+        }
+
+        a {
+            color: green;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: #cbdde9;
+            color: #1f3a4b;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .tab-btn.active {
+            background: #ff9142;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .tab-content {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+        .tab-content.active-tab {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(6px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* tarjetas de teoría */
+        .theory-card {
+            background: linear-gradient(115deg, #1e3c5c 0%, #0f2c44 100%);
+            color: white;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .theory-card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+        .rule-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        .rule-item {
+            background: rgba(255,255,240,0.12);
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.2rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        .example {
+            font-family: monospace;
+            background: #ffefcf;
+            color: #2c3e50;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* stats */
+        .stats-bar {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 0.6rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            gap: 0.5rem;
+        }
+        .stats-item {
+            background: #ecf3fa;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1f4970;
+        }
+
+        .quiz-panel {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.6rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .question-text {
+            background: #eef3fc;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            border-left: 6px solid #ff9142;
+        }
+        .options-area {
+            margin: 1rem 0;
+        }
+        .option {
+            background: #f9fafc;
+            border: 1px solid #ddd;
+            border-radius: 60px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.6rem;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .option.selected {
+            background: #d9e9ff;
+            border-color: #2c6e9e;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1rem 0;
+        }
+        button {
+            background: #1f4a6e;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover { background: #ff9142; transform: translateY(-2px);}
+        .feedback {
+            background: #f1f6fd;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border-left: 4px solid #ff9142;
+        }
+        .feedback.correct { background: #e0f7e8; border-left-color: #2e7d32; }
+        .feedback.wrong { background: #fff0ed; border-left-color: #c7362b; }
+        .completion { text-align: center; background: #deefe8; border-radius: 1.5rem; padding: 1.5rem; margin-top: 1rem;}
+
+        @media (max-width: 700px) {
+            body { padding: 1rem; }
+            .question-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <a href="index.html">REGRESAR AL PRINCIPAL</a>
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="aslike">🔤 AS vs LIKE</button>
+        <button class="tab-btn" data-tab="sosuch">⚡ SO vs SUCH</button>
+    </div>
+
+    <!-- =================== AS vs LIKE =================== -->
+    <div id="aslikeTab" class="tab-content active-tab">
+        <div class="theory-card">
+            <h2>📘 AS · LIKE · ¿cuándo usar cada uno?</h2>
+            <div class="rule-grid">
+                <div class="rule-item"><strong>LIKE</strong> (preposición) → semejanza, "parecido a".<br> <span class="example">He runs like a cheetah.</span><br> <span class="example">She sings like an angel.</span></div>
+                <div class="rule-item"><strong>AS</strong> (conjunción / preposición) → función o rol, "como" en calidad de, o seguido de verbo.<br> <span class="example">He works as a teacher.</span><br> <span class="example">Do as I say.</span></div>
+                <div class="rule-item"><strong>💡 Truco:</strong> si puedes reemplazar por "similar to" → LIKE. Si significa "en la función de" o va seguido de sujeto+verbo → AS.</div>
+            </div>
+        </div>
+        <div class="stats-bar" id="aslikeStats">
+            <div class="stats-item">📋 Ejercicio <span id="asCurrent">0</span> / <span id="asTotal">0</span></div>
+            <div class="stats-item">✅ Aciertos: <span id="asScore">0</span></div>
+        </div>
+        <div class="quiz-panel" id="aslikeQuiz"></div>
+    </div>
+
+    <!-- =================== SO vs SUCH =================== -->
+    <div id="sosuchTab" class="tab-content">
+        <div class="theory-card">
+            <h2>⚡ SO · SUCH · intensificadores</h2>
+            <div class="rule-grid">
+                <div class="rule-item"><strong>SO + adjetivo / adverbio</strong><br> <span class="example">The movie was so boring.</span><br> <span class="example">He runs so fast.</span></div>
+                <div class="rule-item"><strong>SUCH + (adjetivo) + sustantivo</strong><br> <span class="example">It's such a beautiful day.</span><br> <span class="example">They are such nice people.</span></div>
+                <div class="rule-item"><strong>📌 Estructura:</strong> such + a/an + adjetivo + singular; such + adjetivo + plural/ incontable.<br> so + adjetivo (sin sustantivo).</div>
+            </div>
+        </div>
+        <div class="stats-bar" id="sosuchStats">
+            <div class="stats-item">📋 Ejercicio <span id="soCurrent">0</span> / <span id="soTotal">0</span></div>
+            <div class="stats-item">✅ Aciertos: <span id="soScore">0</span></div>
+        </div>
+        <div class="quiz-panel" id="sosuchQuiz"></div>
+    </div>
+</div>
+
+<script>
+    // ---------- GENERACIÓN MASIVA EJERCICIOS ----------
+    // ******* BLOQUE AS vs LIKE *******
+    const asLikeTemplates = [
+        { sentence: "He works ___ a doctor.", correct: "as", explanation: "'as' indica profesión o rol." },
+        { sentence: "She dances ___ a professional.", correct: "like", explanation: "semejanza: baila parecido a un profesional." },
+        { sentence: "You should do ___ I told you.", correct: "as", explanation: "después de 'do' + oración, usamos 'as' (como)." },
+        { sentence: "That bag looks ___ mine.", correct: "like", explanation: "parecido a → like." },
+        { sentence: "He used his shoe ___ a hammer.", correct: "as", explanation: "función: lo usa como martillo (rol)." },
+        { sentence: "It's exactly ___ you said.", correct: "as", explanation: "conjunción comparativa: como dijiste." },
+        { sentence: "My sister is ___ my mother.", correct: "like", explanation: "semejanza física o personalidad." },
+        { sentence: "I've been working ___ a waiter.", correct: "as", explanation: "empleo o función." },
+        { sentence: "She treats him ___ a child.", correct: "like", explanation: "se comporta de manera similar a un niño." },
+        { sentence: "Nothing compares ___ you.", correct: "like", explanation: "frase común: nothing like you." }
+    ];
+    // expandir para ~110 ejercicios
+    function generateAsLikeExercises(total = 110) {
+        let exercises = [];
+        let idx = 0;
+        while (exercises.length < total) {
+            const base = asLikeTemplates[idx % asLikeTemplates.length];
+            let sentence = base.sentence;
+            // pequeñas variaciones
+            if (idx % 5 === 2 && sentence.includes("doctor")) sentence = sentence.replace("doctor", "engineer");
+            if (idx % 7 === 3 && sentence.includes("dances")) sentence = sentence.replace("dances", "sings");
+            if (idx % 9 === 1 && sentence.includes("bag")) sentence = sentence.replace("bag", "jacket");
+            exercises.push({
+                text: sentence,
+                correct: base.correct,
+                explanation: base.explanation
+            });
+            idx++;
+        }
+        // mezclar
+        for (let i = exercises.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [exercises[i], exercises[j]] = [exercises[j], exercises[i]];
+        }
+        return exercises;
+    }
+
+    // ******* BLOQUE SO vs SUCH *******
+    const soSuchTemplates = [
+        { sentence: "It was ___ a hot day that we stayed home.", correct: "such", explanation: "such + a + adjetivo + sustantivo singular." },
+        { sentence: "The movie was ___ boring that I fell asleep.", correct: "so", explanation: "so + adjetivo (boring) sin sustantivo directo." },
+        { sentence: "They are ___ nice people!", correct: "such", explanation: "such + adjetivo + plural (people)." },
+        { sentence: "He drives ___ fast that it's scary.", correct: "so", explanation: "so + adverbio (fast)." },
+        { sentence: "It's ___ an interesting book!", correct: "such", explanation: "such + a/an + adjetivo + singular." },
+        { sentence: "I have ___ much work to do.", correct: "so", explanation: "so + much/many (expresión de cantidad)." },
+        { sentence: "She has ___ beautiful eyes.", correct: "such", explanation: "such + adjetivo + plural (eyes)." },
+        { sentence: "The weather is ___ wonderful!", correct: "so", explanation: "so + adjetivo (wonderful) sin sustantivo." },
+        { sentence: "It was ___ a great concert!", correct: "such", explanation: "such + a + adjetivo + sustantivo." },
+        { sentence: "Why are you ___ angry?", correct: "so", explanation: "so + adjetivo." }
+    ];
+    function generateSoSuchExercises(total = 110) {
+        let exercises = [];
+        let idx = 0;
+        while (exercises.length < total) {
+            const base = soSuchTemplates[idx % soSuchTemplates.length];
+            let sentence = base.sentence;
+            if (idx % 6 === 2 && sentence.includes("hot day")) sentence = sentence.replace("hot day", "cold night");
+            if (idx % 8 === 1 && sentence.includes("nice people")) sentence = sentence.replace("nice", "friendly");
+            exercises.push({
+                text: sentence,
+                correct: base.correct,
+                explanation: base.explanation
+            });
+            idx++;
+        }
+        for (let i = exercises.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [exercises[i], exercises[j]] = [exercises[j], exercises[i]];
+        }
+        return exercises;
+    }
+
+    // ------------------ Clase para manejar cada módulo ------------------
+    class GrammarModule {
+        constructor(containerId, exercisesArray, statsIds, storageKey) {
+            this.container = document.getElementById(containerId);
+            this.exercises = exercisesArray;
+            this.currentIndex = 0;
+            this.score = 0;
+            this.answered = false;
+            this.selectedOption = null;
+            this.currentQuestionData = null;
+            this.statsCurrentSpan = document.getElementById(statsIds.current);
+            this.statsTotalSpan = document.getElementById(statsIds.total);
+            this.statsScoreSpan = document.getElementById(statsIds.score);
+            this.storageKey = storageKey;
+            this.loadProgress();
+            this.render();
+        }
+
+        saveProgress() {
+            localStorage.setItem(this.storageKey, JSON.stringify({
+                currentIndex: this.currentIndex,
+                score: this.score,
+                answered: this.answered,
+                selectedOption: this.selectedOption
+            }));
+        }
+
+        loadProgress() {
+            const saved = localStorage.getItem(this.storageKey);
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    this.currentIndex = data.currentIndex;
+                    this.score = data.score;
+                    this.answered = data.answered;
+                    this.selectedOption = data.selectedOption;
+                } catch(e) {}
+            }
+            // si el índice supera la longitud, reiniciar
+            if (this.currentIndex >= this.exercises.length) this.currentIndex = 0;
+        }
+
+        resetProgress() {
+            this.currentIndex = 0;
+            this.score = 0;
+            this.answered = false;
+            this.selectedOption = null;
+            this.saveProgress();
+            this.render();
+        }
+
+        render() {
+            if (!this.container) return;
+            if (this.currentIndex >= this.exercises.length) {
+                this.container.innerHTML = `<div class="completion">🎉 ¡Completaste todos los ${this.exercises.length} ejercicios!<br> Puntuación: ${this.score}/${this.exercises.length}<br><button id="resetBtnModule">🔄 Reiniciar este módulo</button></div>`;
+                const resetBtn = document.getElementById('resetBtnModule');
+                if (resetBtn) resetBtn.onclick = () => this.resetProgress();
+                this.updateStats();
+                return;
+            }
+            const ex = this.exercises[this.currentIndex];
+            this.currentQuestionData = ex;
+            this.updateStats();
+            let html = `
+                <div class="question-text">📝 ${ex.text}</div>
+                <div class="options-area" id="optionsArea-${this.storageKey}">
+                    <div class="option" data-value="aslike">🔹 as</div>
+                    <div class="option" data-value="like">🔸 like</div>
+                </div>
+            `;
+            // para SO vs SUCH cambiamos las opciones
+            if (this.storageKey.includes('sosuch')) {
+                html = `
+                    <div class="question-text">⚡ ${ex.text}</div>
+                    <div class="options-area" id="optionsArea-${this.storageKey}">
+                        <div class="option" data-value="so">✅ so</div>
+                        <div class="option" data-value="such">⭐ such</div>
+                    </div>
+                `;
+            }
+            if (!this.answered) {
+                html += `<div class="btn-group"><button id="checkBtn-${this.storageKey}">🔍 Verificar</button><button id="resetModuleBtn">🔄 Reiniciar módulo</button></div>`;
+            } else {
+                const isCorrect = (this.selectedOption === ex.correct);
+                html += `<div class="btn-group"><button id="nextBtn-${this.storageKey}" style="background:#2c6e9e;">➡ Siguiente</button><button id="resetModuleBtn">🔄 Reiniciar módulo</button></div>`;
+                const feedbackClass = isCorrect ? 'correct' : 'wrong';
+                let feedbackMsg = isCorrect ? '✅ ¡Correcto!' : `❌ Incorrecto. La respuesta correcta es "${ex.correct}". ${ex.explanation}`;
+                if (!isCorrect && this.selectedOption) {
+                    feedbackMsg += `<br><strong>🔍 Tu elección:</strong> "${this.selectedOption}" – ${ex.explanation}`;
+                } else if (!isCorrect && !this.selectedOption) {
+                    feedbackMsg += `<br>No seleccionaste ninguna opción antes de verificar.`;
+                }
+                html += `<div class="feedback ${feedbackClass}">${feedbackMsg}</div>`;
+            }
+            this.container.innerHTML = html;
+            this.attachEvents();
+        }
+
+        attachEvents() {
+            // opciones
+            const optionsDivs = document.querySelectorAll(`#optionsArea-${this.storageKey} .option`);
+            optionsDivs.forEach(opt => {
+                opt.removeEventListener('click', this.optionHandler);
+                opt.addEventListener('click', this.optionHandler.bind(this));
+            });
+            const checkBtn = document.getElementById(`checkBtn-${this.storageKey}`);
+            if (checkBtn) checkBtn.onclick = () => this.checkAnswer();
+            const nextBtn = document.getElementById(`nextBtn-${this.storageKey}`);
+            if (nextBtn) nextBtn.onclick = () => this.nextQuestion();
+            const resetBtn = document.getElementById(`resetModuleBtn`);
+            if (resetBtn) resetBtn.onclick = () => this.resetProgress();
+            // resaltar opción seleccionada previamente si existe
+            if (this.selectedOption && !this.answered) {
+                optionsDivs.forEach(opt => {
+                    if (opt.dataset.value === this.selectedOption) opt.classList.add('selected');
+                });
+            }
+        }
+
+        optionHandler(e) {
+            if (this.answered) return;
+            const target = e.currentTarget;
+            const value = target.dataset.value;
+            this.selectedOption = value;
+            // quitar selected de todos
+            const parent = target.parentNode;
+            parent.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            target.classList.add('selected');
+            this.saveProgress();
+        }
+
+        checkAnswer() {
+            if (this.answered) return;
+            if (!this.selectedOption) {
+                alert("Selecciona una opción (as/like o so/such) antes de verificar.");
+                return;
+            }
+            const isCorrect = (this.selectedOption === this.currentQuestionData.correct);
+            if (isCorrect) {
+                this.score++;
+                this.updateStats();
+            }
+            this.answered = true;
+            this.saveProgress();
+            this.render();
+        }
+
+        nextQuestion() {
+            if (!this.answered) return;
+            this.currentIndex++;
+            this.answered = false;
+            this.selectedOption = null;
+            if (this.currentIndex >= this.exercises.length) {
+                this.render();
+            } else {
+                this.saveProgress();
+                this.render();
+            }
+        }
+
+        updateStats() {
+            this.statsCurrentSpan.innerText = this.currentIndex + 1;
+            this.statsTotalSpan.innerText = this.exercises.length;
+            this.statsScoreSpan.innerText = this.score;
+        }
+    }
+
+    // ---------- INICIALIZAR AMBOS MÓDULOS ----------
+    const aslikeExercises = generateAsLikeExercises(112);
+    const sosuchExercises = generateSoSuchExercises(112);
+    
+    let aslikeModule = null;
+    let sosuchModule = null;
+    
+    function initModules() {
+        aslikeModule = new GrammarModule('aslikeQuiz', aslikeExercises, 
+            { current: 'asCurrent', total: 'asTotal', score: 'asScore' }, 'aslikeProgress');
+        sosuchModule = new GrammarModule('sosuchQuiz', sosuchExercises,
+            { current: 'soCurrent', total: 'soTotal', score: 'soScore' }, 'sosuchProgress');
+    }
+    
+    // TABS switching + reset rendering al cambiar (para evitar errores visuales)
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.dataset.tab;
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            tabContents.forEach(content => content.classList.remove('active-tab'));
+            if (tabId === 'aslike') document.getElementById('aslikeTab').classList.add('active-tab');
+            else document.getElementById('sosuchTab').classList.add('active-tab');
+            // re-renderizar módulo correspondiente para actualizar tamaño si es necesario
+            if (tabId === 'aslike' && aslikeModule) aslikeModule.render();
+            if (tabId === 'sosuch' && sosuchModule) sosuchModule.render();
+        });
+    });
+    
+    initModules();
+</script>
+</body>
+</html>
+```

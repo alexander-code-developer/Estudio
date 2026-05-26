@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Causative Form · HAVE / GET (presente, pasado, futuro)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #eef2f7;
+            padding: 1.8rem 1.2rem;
+        }
+        a {
+            color: white;
+        }
+
+        .main-container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .theory-card {
+            background: linear-gradient(115deg, #1e3c5c 0%, #0a2a3f 100%);
+            color: white;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.3);
+        }
+
+        .theory-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .causative-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .causative-card {
+            background: rgba(255,255,240,0.12);
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.2rem;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .causative-card strong {
+            font-size: 1.1rem;
+            color: #ffaa66;
+        }
+
+        .example {
+            font-family: monospace;
+            background: #f4e3b1;
+            color: #1e2f3a;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.8rem;
+        }
+
+        .stats-bar {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            gap: 0.5rem;
+        }
+
+        .stats-item {
+            background: #ecf3fa;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1f4970;
+        }
+
+        .quiz-panel {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .question-text {
+            background: #f0f5fc;
+            padding: 1.2rem;
+            border-radius: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #ff9142;
+        }
+
+        .options-area {
+            margin: 1rem 0;
+        }
+
+        .option {
+            background: #f9fafc;
+            border: 1px solid #dce5f0;
+            border-radius: 60px;
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.7rem;
+            cursor: pointer;
+            transition: 0.1s;
+            font-weight: 500;
+        }
+
+        .option.selected {
+            background: #d9e9ff;
+            border-color: #2c6e9e;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1.2rem 0 0.5rem;
+        }
+
+        button {
+            background: #1f4a6e;
+            border: none;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+
+        button:hover {
+            background: #ff9142;
+            transform: translateY(-2px);
+        }
+
+        .feedback {
+            background: #f1f6fd;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 5px solid #ff9142;
+        }
+
+        .feedback.correct {
+            background: #e0f7e8;
+            border-left-color: #2e7d32;
+        }
+
+        .feedback.wrong {
+            background: #fff0ed;
+            border-left-color: #c7362b;
+        }
+
+        .completion {
+            text-align: center;
+            background: #deefe8;
+            border-radius: 1.5rem;
+            padding: 2rem;
+        }
+
+        @media (max-width: 650px) {
+            body { padding: 1rem; }
+            .question-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="theory-card">
+        <a href="index.html">REGRESAR AL PRINCIPAL</a>
+        <h1>🔧 Causative Form: HAVE / GET · (have, has, had, will have, get, gets, got, will get)</h1>
+        <p>Expresamos que alguien <strong>hace que otra persona realice una acción por nosotros</strong>.</p>
+        <div class="causative-grid">
+            <div class="causative-card">
+                <strong>📌 HAVE + objeto + participio</strong><br>
+                <span class="example">I have my car repaired.</span><br>
+                <span class="example">She has her hair cut.</span><br>
+                <span class="example">They had the house painted.</span><br>
+                <span class="example">We will have the documents signed.</span>
+            </div>
+            <div class="causative-card">
+                <strong>⚡ GET + objeto + participio</strong><br>
+                <span class="example">I get my car repaired.</span><br>
+                <span class="example">She gets her nails done.</span><br>
+                <span class="example">He got his phone fixed.</span><br>
+                <span class="example">They will get the report finished.</span>
+            </div>
+            <div class="causative-card">
+                <strong>🎯 Estructura clave:</strong><br>
+                Sujeto + have/get (conjugado) + objeto + participio pasado<br>
+                <span class="example">Present: have/has + object + past participle</span><br>
+                <span class="example">Past: had/got + object + past participle</span><br>
+                <span class="example">Future: will have/will get + object + past participle</span>
+            </div>
+        </div>
+        <p style="margin-top: 12px;">💡 <strong>Diferencia:</strong> "have" es más formal, "get" es más informal/cotidiano. Ambos funcionan igual. ¡Practica con más de 200 ejercicios!</p>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stats-item">📋 Ejercicio <span id="currentNum">1</span> / <span id="totalNum">0</span></div>
+        <div class="stats-item">✅ Aciertos: <span id="scoreValue">0</span></div>
+        <div class="stats-item"><button id="resetGlobalBtn" style="background:#5f6c7a; padding:0.2rem 1rem;">🔄 Reiniciar todo</button></div>
+    </div>
+
+    <div class="quiz-panel" id="quizPanel"></div>
+</div>
+
+<script>
+    // ---------- BANCO DE EJERCICIOS: Causativa con HAVE, HAS, HAD, WILL HAVE, GET, GETS, GOT, WILL GET ----------
+    const templates = [
+        // PRESENTE: HAVE / HAS + objeto + participio
+        { sentence: "I always ___ my car washed at that garage.", correct: "have", options: ["have", "has", "had", "get"], explanation: "Presente simple (I) → have + objeto + participio." },
+        { sentence: "She ___ her hair cut every month.", correct: "has", options: ["have", "has", "had", "gets"], explanation: "She → has + objeto + participio (causativo)." },
+        { sentence: "We ___ our house cleaned twice a week.", correct: "have", options: ["have", "has", "had", "get"], explanation: "We → have." },
+        { sentence: "He ___ his suit dry-cleaned for weddings.", correct: "has", options: ["have", "has", "had", "gets"], explanation: "He → has + objeto + participio." },
+        // PRESENTE con GET/GETS
+        { sentence: "I always ___ my car washed at that garage (informal).", correct: "get", options: ["get", "gets", "got", "have"], explanation: "Get causativo informal." },
+        { sentence: "She ___ her nails done every Friday.", correct: "gets", options: ["get", "gets", "got", "has"], explanation: "She + gets + objeto + participio." },
+        { sentence: "They ___ their groceries delivered.", correct: "get", options: ["get", "gets", "got", "have"], explanation: "They → get causativo." },
+        // PASADO: HAD / GOT
+        { sentence: "Yesterday, I ___ my phone repaired.", correct: "had", options: ["have", "has", "had", "will have"], explanation: "Pasado → had + objeto + participio." },
+        { sentence: "She ___ her dress altered for the party.", correct: "had", options: ["have", "has", "had", "got"], explanation: "Evento pasado → had." },
+        { sentence: "They ___ their roof fixed after the storm.", correct: "got", options: ["get", "got", "had", "gets"], explanation: "Pasado informal → got + objeto + participio." },
+        { sentence: "He ___ his passport renewed last week.", correct: "got", options: ["got", "had", "gets", "has"], explanation: "Got causativo pasado." },
+        // FUTURO: WILL HAVE / WILL GET
+        { sentence: "Next month, I ___ my kitchen renovated.", correct: "will have", options: ["will have", "will get", "have", "had"], explanation: "Futuro con will have + objeto + participio." },
+        { sentence: "She ___ her makeup done by a professional for the gala.", correct: "will get", options: ["will get", "will have", "gets", "got"], explanation: "Futuro informal will get." },
+        { sentence: "We ___ the documents signed by tomorrow.", correct: "will have", options: ["will have", "will get", "had", "have"], explanation: "Futuro perfectivo → will have." },
+        { sentence: "They ___ the carpet cleaned before the party.", correct: "will get", options: ["will get", "will have", "get", "got"], explanation: "Futuro con get." },
+        // mezcla avanzada
+        { sentence: "I need to ___ my eyes tested.", correct: "have", options: ["have", "get", "had", "will have"], explanation: "Presente necesidad → have/get (ambos, pero aquí have)." },
+        { sentence: "She ___ her house painted next spring.", correct: "will have", options: ["will have", "has", "had", "gets"], explanation: "Futuro planificado." },
+        { sentence: "He ___ his bike stolen last year (causativo no aplica? es pasado con 'had' para accidente).", correct: "had", options: ["had", "got", "has", "will have"], explanation: "Estructura 'had something done' (experiencia)." },
+        { sentence: "I ___ my computer fixed yesterday.", correct: "got", options: ["got", "had", "get", "have"], explanation: "Pasado informal con got." },
+        { sentence: "She always ___ her room cleaned by a service.", correct: "has", options: ["has", "have", "had", "gets"], explanation: "Rutina presente." },
+        { sentence: "By 2026, they ___ their debts paid off.", correct: "will have", options: ["will have", "will get", "had", "have"], explanation: "Futuro perfecto causativo." }
+    ];
+
+    // Generar más de 200 ejercicios con variaciones
+    function generateExercises(total = 215) {
+        let exercises = [];
+        let idx = 0;
+        while (exercises.length < total) {
+            let base = templates[idx % templates.length];
+            let sentence = base.sentence;
+            let options = [...base.options];
+            let correct = base.correct;
+            let explanation = base.explanation;
+            
+            // pequeñas mutaciones para evitar monotonía
+            if (idx % 7 === 3 && sentence.includes("car")) {
+                sentence = sentence.replace("car", "motorcycle");
+            }
+            if (idx % 9 === 2 && sentence.includes("hair")) {
+                sentence = sentence.replace("hair", "beard");
+            }
+            if (idx % 5 === 1 && sentence.includes("phone")) {
+                sentence = sentence.replace("phone", "laptop");
+            }
+            if (idx % 11 === 4 && sentence.includes("house")) {
+                sentence = sentence.replace("house", "apartment");
+            }
+            exercises.push({
+                sentence: sentence,
+                correct: correct,
+                options: options,
+                explanation: explanation
+            });
+            idx++;
+        }
+        // mezclar orden
+        for (let i = exercises.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [exercises[i], exercises[j]] = [exercises[j], exercises[i]];
+        }
+        return exercises;
+    }
+
+    // ---------- VARIABLES GLOBALES ----------
+    let exercisesList = [];
+    let currentIndex = 0;
+    let userScore = 0;
+    let answered = false;
+    let selectedOption = null;
+    let currentQuestion = null;
+
+    const quizPanel = document.getElementById('quizPanel');
+    const currentNumSpan = document.getElementById('currentNum');
+    const totalNumSpan = document.getElementById('totalNum');
+    const scoreSpan = document.getElementById('scoreValue');
+    const resetGlobalBtn = document.getElementById('resetGlobalBtn');
+
+    function normalize(str) {
+        return str.toLowerCase().trim();
+    }
+
+    function renderQuestion() {
+        if (!exercisesList.length || currentIndex >= exercisesList.length) {
+            quizPanel.innerHTML = `
+                <div class="completion">
+                    🎉 ¡Excelente! Completaste todos los ${exercisesList.length} ejercicios.<br>
+                    <strong>Puntuación final: ${userScore} / ${exercisesList.length}</strong><br><br>
+                    <button id="fullRestartBtn">🔄 Reiniciar todo</button>
+                </div>
+            `;
+            const restartBtn = document.getElementById('fullRestartBtn');
+            if (restartBtn) restartBtn.addEventListener('click', () => fullReset());
+            return;
+        }
+
+        currentQuestion = exercisesList[currentIndex];
+        currentNumSpan.innerText = currentIndex + 1;
+        totalNumSpan.innerText = exercisesList.length;
+        scoreSpan.innerText = userScore;
+
+        let html = `
+            <div class="question-text">🔧 ${currentQuestion.sentence}</div>
+            <div class="options-area" id="optionsContainer">
+        `;
+        currentQuestion.options.forEach((opt, idx) => {
+            const isSelected = (selectedOption === opt && !answered);
+            const selectedClass = isSelected ? 'selected' : '';
+            html += `<div class="option ${selectedClass}" data-opt="${opt}">${opt}</div>`;
+        });
+        html += `</div><div class="btn-group">`;
+        if (!answered) {
+            html += `<button id="checkBtn">🔍 Verificar respuesta</button>`;
+        } else {
+            html += `<button id="nextBtn" class="next-btn">➡ Siguiente ejercicio</button>`;
+        }
+        html += `<button id="resetLocalBtn" style="background:#5f6c7a;">🔄 Reiniciar todo</button>`;
+        html += `</div>`;
+
+        if (answered) {
+            const isCorrect = (selectedOption === currentQuestion.correct);
+            const feedbackClass = isCorrect ? 'correct' : 'wrong';
+            let feedbackMsg = isCorrect ? '✅ ¡Correcto!' : `❌ Incorrecto. Respuesta correcta: <strong>${currentQuestion.correct}</strong>.`;
+            feedbackMsg += `<br>📖 ${currentQuestion.explanation}`;
+            if (!isCorrect && selectedOption) {
+                feedbackMsg += `<br><span style="font-size:0.85rem;">Tu respuesta: "${selectedOption}"</span>`;
+            }
+            html += `<div class="feedback ${feedbackClass}">${feedbackMsg}</div>`;
+        }
+
+        quizPanel.innerHTML = html;
+        attachEvents();
+    }
+
+    function attachEvents() {
+        const optionsDivs = document.querySelectorAll('.option');
+        optionsDivs.forEach(div => {
+            div.removeEventListener('click', optionClickHandler);
+            div.addEventListener('click', optionClickHandler);
+        });
+        const checkBtn = document.getElementById('checkBtn');
+        if (checkBtn) checkBtn.addEventListener('click', checkAnswer);
+        const nextBtn = document.getElementById('nextBtn');
+        if (nextBtn) nextBtn.addEventListener('click', nextQuestion);
+        const resetLocal = document.getElementById('resetLocalBtn');
+        if (resetLocal) resetLocal.addEventListener('click', () => fullReset());
+    }
+
+    function optionClickHandler(e) {
+        if (answered) return;
+        const target = e.currentTarget;
+        const selectedValue = target.dataset.opt;
+        selectedOption = selectedValue;
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+        target.classList.add('selected');
+    }
+
+    function checkAnswer() {
+        if (answered) return;
+        if (!selectedOption) {
+            alert("Por favor selecciona una opción.");
+            return;
+        }
+        const isCorrect = (selectedOption === currentQuestion.correct);
+        if (isCorrect) {
+            userScore++;
+            scoreSpan.innerText = userScore;
+        }
+        answered = true;
+        renderQuestion();
+    }
+
+    function nextQuestion() {
+        if (!answered) return;
+        currentIndex++;
+        answered = false;
+        selectedOption = null;
+        if (currentIndex >= exercisesList.length) {
+            renderQuestion();
+        } else {
+            renderQuestion();
+        }
+    }
+
+    function fullReset() {
+        exercisesList = generateExercises(215);
+        currentIndex = 0;
+        userScore = 0;
+        answered = false;
+        selectedOption = null;
+        scoreSpan.innerText = "0";
+        renderQuestion();
+    }
+
+    function init() {
+        exercisesList = generateExercises(215);
+        fullReset();
+        resetGlobalBtn.addEventListener('click', () => fullReset());
+    }
+
+    init();
+</script>
+</body>
+</html>

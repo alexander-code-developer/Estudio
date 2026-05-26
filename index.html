@@ -3,612 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>English Studio: Relative Clauses & One/Ones · 200+ ejercicios</title>
+    <title>📚 English Hub · Todas las herramientas</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, 'Segoe UI', 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-        }
-        a {
-            color: white;
+            font-family: system-ui, 'Segoe UI', 'Inter', 'Poppins', sans-serif;
         }
 
         body {
-            background: linear-gradient(145deg, #f0f4ff 0%, #e6edf9 100%);
-            min-height: 100vh;
+            background: #eef2f7;
             padding: 2rem 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        /* main card */
-        .study-container {
-            max-width: 850px;
-            width: 100%;
+        .container {
+            max-width: 1300px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(0px);
-            border-radius: 2.5rem;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            transition: all 0.2s ease;
         }
 
-        /* header */
-        .header {
-            background: #1a2a4f;
+        .hero {
+            background: linear-gradient(135deg, #1a3a4f, #0f2a3a);
+            border-radius: 2rem;
+            padding: 2rem;
             color: white;
-            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
             text-align: center;
         }
 
-        .header h1 {
-            font-size: 1.8rem;
-            letter-spacing: -0.3px;
-            font-weight: 600;
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .header p {
-            opacity: 0.85;
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
-        .badge-topic {
-            display: inline-block;
-            background: #ffb347;
-            color: #1e2a3a;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            margin-top: 0.7rem;
-        }
-
-        /* progress area */
-        .progress-area {
-            padding: 1rem 2rem;
-            background: #f8fafd;
-            border-bottom: 1px solid #e2edf7;
+        .badge-group {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
             flex-wrap: wrap;
-            gap: 0.6rem;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
         }
 
-        .counter {
-            background: #eef2ff;
-            border-radius: 60px;
+        .badge {
+            background: rgba(255,255,240,0.2);
+            backdrop-filter: blur(4px);
             padding: 0.3rem 1rem;
-            font-weight: 600;
-            color: #1f3a6b;
-        }
-
-        .score {
-            background: #d9e6f5;
             border-radius: 60px;
-            padding: 0.3rem 1rem;
-            font-weight: 700;
-            color: #0b2b42;
+            font-size: 0.8rem;
         }
 
-        /* question card */
-        .question-card {
-            padding: 2rem 2rem 1.5rem;
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
         }
 
-        .topic-tag {
-            display: inline-block;
-            background: #c7d9f0;
-            padding: 0.25rem 1rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #1e3a6b;
+        .tool-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+            border: 1px solid #e2edf7;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.4rem;
+            color: #1f4a6e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-card p {
+            color: #4a627a;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             margin-bottom: 1.2rem;
         }
 
-        .question-text {
-            font-size: 1.45rem;
-            line-height: 1.4;
-            font-weight: 500;
-            color: #0a2b44;
-            margin-bottom: 1.8rem;
-            background: #fefefe;
-            padding: 0.8rem 1rem;
-            border-radius: 1.2rem;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-            border-left: 5px solid #ffb347;
-        }
-
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            margin: 1.5rem 0 1.2rem;
-        }
-
-        .option {
-            background: #ffffff;
-            border: 1.5px solid #e2eafc;
+        .tag {
+            background: #ecf3fa;
+            padding: 0.2rem 0.8rem;
             border-radius: 60px;
-            padding: 0.8rem 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-            color: #1e2f4b;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #2c5a7a;
         }
 
-        .option:hover {
-            background: #ecf3fe;
-            border-color: #91b3e0;
-            transform: scale(0.99);
-        }
-
-        input[type="radio"] {
-            accent-color: #2c5f9a;
-            width: 1.2rem;
-            height: 1.2rem;
-            cursor: pointer;
-        }
-
-        .option.selected {
-            background: #e8f0fe;
-            border-color: #2c5f9a;
-            box-shadow: 0 2px 6px rgba(44,95,154,0.1);
-        }
-
-        .feedback {
-            background: #f1f6fd;
-            border-radius: 1rem;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-            border-left: 4px solid #2c5f9a;
-            color: #2c3e66;
-        }
-
-        .feedback.correct {
-            background: #e0f7e8;
-            border-left-color: #2e7d32;
-            color: #1e4a2a;
-        }
-
-        .feedback.wrong {
-            background: #ffe9e9;
-            border-left-color: #c7362b;
-            color: #9b2e1f;
-        }
-
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: space-between;
-            margin-top: 0.5rem;
-        }
-
-        button {
-            background: #1f3b62;
+        .btn-open {
+            background: #ff9142;
             color: white;
             border: none;
-            padding: 0.7rem 1.6rem;
-            border-radius: 80px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
             font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
             transition: 0.2s;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            font-size: 0.85rem;
         }
 
-        button:hover {
-            background: #112b48;
-            transform: translateY(-2px);
-        }
-
-        button:active {
-            transform: translateY(1px);
-        }
-
-        .btn-next {
-            background: #ff8c42;
-        }
-
-        .btn-next:hover {
-            background: #e6732e;
-        }
-
-        .btn-reset {
-            background: #4b6e8a;
-        }
-
-        .completion-message {
-            text-align: center;
-            padding: 2rem;
-            background: #eaf4e8;
-            border-radius: 1.5rem;
-            margin-top: 1rem;
+        .btn-open:hover {
+            background: #e67e2e;
+            transform: scale(1.02);
         }
 
         footer {
-            font-size: 0.7rem;
             text-align: center;
-            padding: 1rem;
-            background: #f5f9ff;
-            color: #5a6e8a;
-            border-top: 1px solid #e2edf7;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 1rem;
-            }
-            .question-card {
-                padding: 1.2rem;
-            }
-            .question-text {
-                font-size: 1.2rem;
-            }
-            .button-group button {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            .progress-area {
-                padding: 0.8rem 1.2rem;
-            }
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #5f7a99;
         }
     </style>
 </head>
 <body>
-<div class="study-container">
-    <div class="header">
+<div class="container">
+    <div class="hero">
         <h1>📘 English Grammar Lab</h1>
-        <p>Relative clauses · Defining / Non-defining · Combine sentences · One / Ones</p>
-        <div class="badge-topic">🎯 200+ interactive drills</div>
-        <a href="index2.html">TEORIA PICALE AQUI</a>
+        <p>Todas tus herramientas interactivas para dominar la gramática inglesa</p>
+        <div class="badge-group">
+            <span class="badge">🎯 200+ ejercicios cada una</span>
+            <span class="badge">⚡ Feedback detallado</span>
+            <span class="badge">📱 Responsive</span>
+        </div>
     </div>
 
-    <div class="progress-area">
-        <div class="counter">📌 Ejercicio <span id="currentNum">1</span> / <span id="totalNum">200</span></div>
-        <div class="score">🏆 Aciertos: <span id="scoreValue">0</span></div>
-    </div>
+    <div class="tools-grid">
+        <!-- 1. One / Ones + Relative Clauses -->
+        <div class="tool-card">
+            <div class="tool-icon">🔗</div>
+            <h3>Relative Clauses & One/Ones</h3>
+            <p>Defining / Non‑defining, combinar oraciones, uso de ONE/ONES. Más de 200 ejercicios dinámicos.</p>
+            <div class="tool-tags">
+                <span class="tag">who/which/where</span>
+                <span class="tag">one/ones</span>
+                <span class="tag">combinar frases</span>
+            </div>
+            <a href="OneOnes.html" class="btn-open" target="_blank">🔗 Abrir herramienta</a>
+        </div>
 
-    <div class="question-card" id="quizArea">
-        <!-- dinámico -->
+        <!-- 2. Defining vs Non‑defining (guía visual) -->
+        <div class="tool-card">
+            <div class="tool-icon">📺</div>
+            <h3>Defining / Non‑defining · Guía</h3>
+            <p>Explicación con videos, ejemplos interactivos y mini‑quiz para entender la diferencia.</p>
+            <div class="tool-tags">
+                <span class="tag">teoría + ejemplos</span>
+                <span class="tag">videos externos</span>
+                <span class="tag">quiz corto</span>
+            </div>
+            <a href="DefiningNoDefining.html" class="btn-open" target="_blank">📖 Abrir guía</a>
+        </div>
+
+        <!-- 3. Passive Voice (is/are) -->
+        <div class="tool-card">
+            <div class="tool-icon">🎤➡️📢</div>
+            <h3>Passive Voice · Presente Simple</h3>
+            <p>Transforma oraciones activas a pasivas con is/are. Incluye negativas, preguntas y análisis de errores.</p>
+            <div class="tool-tags">
+                <span class="tag">is/are</span>
+                <span class="tag">negativas</span>
+                <span class="tag">preguntas</span>
+            </div>
+            <a href="ActivePasiveVoice.html" class="btn-open" target="_blank">🎤 Abrir herramienta</a>
+        </div>
+
+        <!-- 4. As/Like vs So/Such -->
+        <div class="tool-card">
+            <div class="tool-icon">🔤⚡</div>
+            <h3>AS · LIKE · SO · SUCH</h3>
+            <p>Dos bloques independientes: diferencias entre AS y LIKE, y uso de SO / SUCH. Más de 200 ejercicios.</p>
+            <div class="tool-tags">
+                <span class="tag">as vs like</span>
+                <span class="tag">so vs such</span>
+                <span class="tag">pestañas</span>
+            </div>
+            <a href="AsLikeSoSuch.html" class="btn-open" target="_blank">📝 Abrir herramienta</a>
+        </div>
+
+        <!-- 5. Verbos: GET, GOT, HAVE, HAD, WILL HAVE -->
+        <div class="tool-card">
+            <div class="tool-icon">⚙️</div>
+            <h3>Verbos: Get, Got, Have, Had, Will Have</h3>
+            <p>Posesión, obligación, usos cotidianos, presente, pasado y futuro. Más de 200 ejercicios variados.</p>
+            <div class="tool-tags">
+                <span class="tag">have/has/had</span>
+                <span class="tag">get/got</span>
+                <span class="tag">will have</span>
+            </div>
+            <a href="GetHave.html" class="btn-open" target="_blank">🔧 Abrir herramienta</a>
+        </div>
     </div>
-    <footer>
-        💡 Defining / Non-defining? Pronombres relativos, combinación de oraciones y uso de ONE/ONES · Aprende practicando
-    </footer>
 </div>
-
-<script>
-    // ---------- GENERADOR DE 200+ EJERCICIOS (relatives, combinar, one/ones) ----------
-    // Cada ejercicio: { type, questionText, options, correctIndex, explanation }
-    
-    // ----- 1) Definición de plantillas y generación dinámica controlada -----
-    // Usaremos funciones que devuelven arrays de ejercicios con variedad suficiente.
-    
-    // ----- RELATIVE CLAUSES (defining / non-defining) elegir pronombre correcto -----
-    function generateRelativeExercises(count = 70) {
-        const exercises = [];
-        const templates = [
-            { sentence: "The woman ___ lives next door is a doctor.", options: ["who", "which", "where", "whose"], correct: 0, explanation: "'who' se refiere a personas (the woman)." },
-            { sentence: "The car ___ he bought last week is already broken.", options: ["who", "which", "when", "what"], correct: 1, explanation: "'which' para cosas (the car)." },
-            { sentence: "That's the restaurant ___ we had dinner yesterday.", options: ["where", "which", "who", "when"], correct: 0, explanation: "'where' indica lugar (the restaurant)." },
-            { sentence: "Do you know the student ___ phone was stolen?", options: ["whose", "who's", "which", "whom"], correct: 0, explanation: "'whose' expresa posesión (su teléfono)." },
-            { sentence: "The movie ___ we watched last night was amazing.", options: ["who", "which", "where", "what"], correct: 1, explanation: "'which' para objeto (the movie)." },
-            { sentence: "My brother, ___ works at NASA, is an engineer.", options: ["who", "which", "whom", "where"], correct: 0, explanation: "Cláusula no definitoria: 'who' para persona." },
-            { sentence: "Paris, ___ is the capital of France, is beautiful.", options: ["which", "that", "who", "where"], correct: 0, explanation: "no definitoria, 'which' para ciudad." },
-            { sentence: "I lost the book ___ you gave me.", options: ["which", "who", "where", "whose"], correct: 0, explanation: "'which/that' para objeto." },
-            { sentence: "The scientist ___ discovered the vaccine won a prize.", options: ["who", "which", "where", "whose"], correct: 0, explanation: "persona → who." },
-            { sentence: "This is the village ___ I grew up.", options: ["where", "which", "who", "that"], correct: 0, explanation: "'where' para lugares." }
-        ];
-        // ampliamos con más variantes para alcanzar 70 sin repetir excesivamente
-        const extraPronouns = [
-            { sentence: "The concert, ___ lasted three hours, was fantastic.", options: ["which", "who", "where", "whose"], correct: 0, explanation: "no definitoria, refiere a evento." },
-            { sentence: "Anyone ___ arrives late will not be admitted.", options: ["who", "which", "whom", "whose"], correct: 0, explanation: "'who' sujeto para personas." },
-            { sentence: "The building ___ windows are green is the library.", options: ["whose", "which", "where", "that"], correct: 0, explanation: "'whose' posesivo (ventanas del edificio)." },
-            { sentence: "The summer ___ we went to Italy was unforgettable.", options: ["when", "where", "which", "who"], correct: 0, explanation: "'when' para tiempo." },
-            { sentence: "She has a friend ___ plays the guitar.", options: ["who", "which", "whose", "whom"], correct: 0, explanation: "amigo (persona) → who." }
-        ];
-        
-        const allTemplates = [...templates, ...extraPronouns];
-        for (let i = 0; i < count; i++) {
-            const tpl = allTemplates[i % allTemplates.length];
-            // variación para que no se sienta idéntico: modificamos texto ligeramente agregando palabras comunes?
-            let sentence = tpl.sentence;
-            if (i > 20 && i % 7 === 0) sentence = sentence.replace("woman", "person").replace("doctor", "teacher");
-            if (i % 5 === 2) sentence = sentence.replace("car", "bike").replace("bought", "rented");
-            exercises.push({
-                type: "Relative Clause (Pronoun)",
-                questionText: sentence,
-                options: [...tpl.options],
-                correctIndex: tpl.correct,
-                explanation: tpl.explanation + " " + (sentence.includes("non-defining") ? " (coma = non-defining)" : "")
-            });
-        }
-        return exercises;
-    }
-    
-    // ----- COMBINAR DOS ORACIONES usando relative clause -----
-    function generateCombineExercises(count = 70) {
-        const exercises = [];
-        const basePairs = [
-            { s1: "I have a neighbor.", s2: "He plays the violin.", correctCombine: "I have a neighbor who plays the violin.", options: ["I have a neighbor who plays the violin.", "I have a neighbor which plays the violin.", "I have a neighbor he plays the violin.", "I have a neighbor where plays the violin."], correctIdx: 0, exp: "who reemplaza a 'he' (persona)." },
-            { s1: "This is the café.", s2: "We met there.", correctCombine: "This is the café where we met.", options: ["This is the café where we met.", "This is the café which we met.", "This is the café we met where.", "This is the café that we met."], correctIdx: 0, exp: "'where' para lugar donde ocurrió la acción." },
-            { s1: "The laptop is expensive.", s2: "It has 16GB RAM.", correctCombine: "The laptop which has 16GB RAM is expensive.", options: ["The laptop which has 16GB RAM is expensive.", "The laptop who has 16GB RAM is expensive.", "The laptop where has 16GB RAM is expensive.", "The laptop has 16GB RAM is expensive."], correctIdx: 0, exp: "which/that para cosas." },
-            { s1: "She admired the painting.", s2: "It was created by Monet.", correctCombine: "She admired the painting that was created by Monet.", options: ["She admired the painting that was created by Monet.", "She admired the painting who was created by Monet.", "She admired the painting where was created by Monet.", "She admired the painting was created by Monet."], correctIdx: 0, exp: "that/which refiere a 'painting'." },
-            { s1: "The professor is famous.", s2: "His lectures are inspiring.", correctCombine: "The professor whose lectures are inspiring is famous.", options: ["The professor whose lectures are inspiring is famous.", "The professor which lectures are inspiring is famous.", "The professor who lectures are inspiring is famous.", "The professor that lectures are inspiring is famous."], correctIdx: 0, exp: "whose = posesión (sus conferencias)." },
-            { s1: "We visited a city.", s2: "It never rains there.", correctCombine: "We visited a city where it never rains.", options: ["We visited a city where it never rains.", "We visited a city which it never rains.", "We visited a city that it never rains.", "We visited a city when it never rains."], correctIdx: 0, exp: "'where' se refiere a la ciudad (lugar)." }
-        ];
-        // añadimos más variantes manuales para amplitud
-        const extraPairs = [
-            { s1: "I met a girl.", s2: "Her mother works at NASA.", correctCombine: "I met a girl whose mother works at NASA.", options: ["I met a girl whose mother works at NASA.", "I met a girl who mother works at NASA.", "I met a girl which mother works at NASA.", "I met a girl that mother works at NASA."], correctIdx: 0, exp: "cuya madre → relative possessive 'whose'." },
-            { s1: "That's the stadium.", s2: "The final match took place there.", correctCombine: "That's the stadium where the final match took place.", options: ["That's the stadium where the final match took place.", "That's the stadium which the final match took place.", "That's the stadium when the final match took place.", "That's the stadium that the final match took place."], correctIdx: 0, exp: "where = lugar del evento." },
-            { s1: "She loves chocolate.", s2: "It is dark and sweet.", correctCombine: "She loves chocolate which is dark and sweet.", options: ["She loves chocolate which is dark and sweet.", "She loves chocolate who is dark and sweet.", "She loves chocolate where is dark and sweet.", "She loves chocolate it is dark and sweet."], correctIdx: 0, exp: "which / that refiere a chocolate." },
-            { s1: "The architect designed this bridge.", s2: "He won an award.", correctCombine: "The architect who designed this bridge won an award.", options: ["The architect who designed this bridge won an award.", "The architect which designed this bridge won an award.", "The architect designed this bridge won an award.", "The architect whose designed this bridge won an award."], correctIdx: 0, exp: "who porque es persona (arquitecto)." }
-        ];
-        const allPairs = [...basePairs, ...extraPairs];
-        for (let i = 0; i < count; i++) {
-            const pair = allPairs[i % allPairs.length];
-            // mostramos claramente las dos oraciones
-            const text = `🔗 COMBINA: "${pair.s1}" + "${pair.s2}" usando relative clause.`;
-            exercises.push({
-                type: "Combine sentences (Relative Clause)",
-                questionText: text,
-                options: [...pair.options],
-                correctIndex: pair.correctIdx,
-                explanation: pair.exp
-            });
-        }
-        return exercises;
-    }
-    
-    // ----- ONE / ONES exercises (sustituir para evitar repetición) -----
-    function generateOneOnesExercises(count = 60) {
-        const exercises = [];
-        const templatesOne = [
-            { text: "I don't like these shoes. I prefer the blue ____ .", options: ["one", "ones", "them", "it"], correct: 0, explanation: "singular 'shoe' → 'one'." },
-            { text: "These apples are fresh, but the green ____ are sweeter.", options: ["ones", "one", "those", "them"], correct: 0, explanation: "plural 'apples' → 'ones'." },
-            { text: "Your car is fast, but my old ____ is more reliable.", options: ["one", "ones", "car", "it"], correct: 0, explanation: "sustituye a 'car' singular → one." },
-            { text: "I lost my keys. I need new ____ .", options: ["ones", "one", "keys", "them"], correct: 0, explanation: "plural keys → ones." },
-            { text: "This phone is expensive. I'll buy a cheaper ____ .", options: ["one", "ones", "it", "that"], correct: 0, explanation: "singular (phone) → one." },
-            { text: "Those cookies are delicious, but the homemade ____ are even better.", options: ["ones", "one", "they", "these"], correct: 0, explanation: "plural cookies → ones." },
-            { text: "Which jacket do you prefer? The red ____ or the black ____ ?", options: ["one / one", "ones / ones", "one / ones", "it / it"], correct: 0, explanation: "ambas singulares → one / one." },
-            { text: "I love these chairs, but the antique ____ are gorgeous.", options: ["ones", "one", "those", "them"], correct: 0, explanation: "plural chairs → ones." },
-            { text: "This bag is nice, but I need a bigger ____ .", options: ["one", "ones", "it", "bag"], correct: 0, explanation: "singular bag → one." },
-            { text: "The new smartphones are great; the older ____ were slower.", options: ["ones", "one", "those", "models"], correct: 0, explanation: "plural smartphones → ones." }
-        ];
-        // variamos para llegar a 60
-        for (let i = 0; i < count; i++) {
-            const base = templatesOne[i % templatesOne.length];
-            let question = base.text;
-            // pequeños cambios para evitar repetición absoluta
-            if (i % 3 === 1) question = question.replace("apples", "oranges").replace("green", "yellow");
-            if (i % 5 === 2) question = question.replace("car", "bike").replace("old", "vintage");
-            exercises.push({
-                type: "ONE / ONES (evitar repetición)",
-                questionText: question,
-                options: [...base.options],
-                correctIndex: base.correct,
-                explanation: base.explanation
-            });
-        }
-        return exercises;
-    }
-    
-    // ----- MEZCLAR EJERCICIOS TOTAL ~200 -----
-    function buildFullDeck() {
-        const rels = generateRelativeExercises(72);     // 72
-        const combines = generateCombineExercises(70); // 70
-        const ones = generateOneOnesExercises(62);     // 62
-        let all = [...rels, ...combines, ...ones];
-        // ajustar exactamente 200+ (204 aprox), pero recortamos o dejamos hasta 204
-        if (all.length > 205) all = all.slice(0, 205);
-        // Mezclamos los tipos para variedad (Fisher-Yates)
-        for (let i = all.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [all[i], all[j]] = [all[j], all[i]];
-        }
-        return all;
-    }
-    
-    // ---------- LÓGICA PRINCIPAL ----------
-    let exercises = [];
-    let currentIndex = 0;
-    let userScore = 0;
-    let answered = false;        // si ya se verificó la pregunta actual
-    let selectedOption = null;   // índice seleccionado
-    
-    // elementos DOM
-    const quizArea = document.getElementById('quizArea');
-    const currentNumSpan = document.getElementById('currentNum');
-    const totalNumSpan = document.getElementById('totalNum');
-    const scoreSpan = document.getElementById('scoreValue');
-    
-    // renderizar pregunta actual
-    function renderQuestion() {
-        if (!exercises.length || currentIndex >= exercises.length) {
-            // finalización
-            quizArea.innerHTML = `
-                <div class="completion-message">
-                    🎉 ¡Excelente! Has completado todos los ${exercises.length} ejercicios.<br>
-                    ✅ Puntuación final: ${userScore} / ${exercises.length}<br><br>
-                    <button class="btn-reset" id="resetAllBtn">🔄 Reiniciar todos los ejercicios</button>
-                </div>
-            `;
-            const resetBtn = document.getElementById('resetAllBtn');
-            if (resetBtn) resetBtn.addEventListener('click', () => resetAll());
-            return;
-        }
-        
-        const ex = exercises[currentIndex];
-        // actualizar contadores
-        currentNumSpan.innerText = currentIndex + 1;
-        totalNumSpan.innerText = exercises.length;
-        scoreSpan.innerText = userScore;
-        
-        // construir HTML
-        let html = `
-            <div class="topic-tag">📚 ${ex.type}</div>
-            <div class="question-text">${ex.questionText}</div>
-            <div class="options-list" id="optionsList">
-        `;
-        
-        ex.options.forEach((opt, idx) => {
-            const checkedAttr = (selectedOption === idx && !answered) ? 'checked' : '';
-            const selectedClass = (selectedOption === idx && !answered) ? 'selected' : '';
-            html += `
-                <div class="option ${selectedClass}" data-opt-index="${idx}">
-                    <input type="radio" name="questionOption" value="${idx}" id="opt_${idx}" ${checkedAttr} ${answered ? 'disabled' : ''}>
-                    <label for="opt_${idx}" style="flex:1; cursor:pointer;">${opt}</label>
-                </div>
-            `;
-        });
-        
-        let feedbackHtml = '';
-        if (answered) {
-            const isCurrCorrect = (selectedOption === ex.correctIndex);
-            const fbClass = isCurrCorrect ? 'correct' : 'wrong';
-            const correctAnswerText = ex.options[ex.correctIndex];
-            feedbackHtml = `
-                <div class="feedback ${fbClass}">
-                    ${isCurrCorrect ? '✅ ¡Correcto!' : '❌ Incorrecto.'} 
-                    <strong>Respuesta correcta:</strong> "${correctAnswerText}".<br>
-                    📖 ${ex.explanation}
-                </div>
-            `;
-        }
-        
-        html += `</div>${feedbackHtml}<div class="button-group">`;
-        if (!answered) {
-            html += `<button id="checkBtn" class="btn-check">🔍 Verificar respuesta</button>`;
-        } else {
-            html += `<button id="nextBtn" class="btn-next">➡ Siguiente ejercicio</button>`;
-        }
-        html += `<button id="resetQuizBtn" class="btn-reset" style="background:#6c757d;">🔄 Reiniciar</button>
-                </div>`;
-        
-        quizArea.innerHTML = html;
-        
-        // eventos
-        if (!answered) {
-            // agregar listeners a las opciones
-            const optionsDivs = document.querySelectorAll('.option');
-            optionsDivs.forEach(div => {
-                div.addEventListener('click', (e) => {
-                    if (answered) return;
-                    const idx = parseInt(div.dataset.optIndex);
-                    selectOption(idx);
-                });
-            });
-            const radioInputs = document.querySelectorAll('input[name="questionOption"]');
-            radioInputs.forEach(radio => {
-                radio.addEventListener('change', (e) => {
-                    if (answered) return;
-                    const val = parseInt(e.target.value);
-                    selectOption(val);
-                });
-            });
-            const checkBtn = document.getElementById('checkBtn');
-            if (checkBtn) checkBtn.addEventListener('click', () => checkAnswer());
-        } else {
-            const nextBtn = document.getElementById('nextBtn');
-            if (nextBtn) nextBtn.addEventListener('click', () => nextQuestion());
-        }
-        
-        const resetBtn = document.getElementById('resetQuizBtn');
-        if (resetBtn) resetBtn.addEventListener('click', () => resetAll());
-    }
-    
-    function selectOption(idx) {
-        if (answered) return;
-        selectedOption = idx;
-        // actualizar visual
-        const allOptDivs = document.querySelectorAll('.option');
-        allOptDivs.forEach((div, i) => {
-            if (i === idx) {
-                div.classList.add('selected');
-                const radio = div.querySelector('input');
-                if (radio) radio.checked = true;
-            } else {
-                div.classList.remove('selected');
-                const radio = div.querySelector('input');
-                if (radio) radio.checked = false;
-            }
-        });
-    }
-    
-    function checkAnswer() {
-        if (answered) return;
-        if (selectedOption === null) {
-            // mostrar feedback temporal sin perder estado
-            const tempDiv = document.createElement('div');
-            tempDiv.className = 'feedback wrong';
-            tempDiv.style.marginTop = '10px';
-            tempDiv.innerText = '⚠️ Por favor selecciona una opción antes de verificar.';
-            const container = document.querySelector('.options-list')?.parentNode;
-            if (container && !document.querySelector('.temp-feedback')) {
-                tempDiv.classList.add('temp-feedback');
-                container.insertBefore(tempDiv, document.querySelector('.button-group'));
-                setTimeout(() => tempDiv.remove(), 1500);
-            }
-            return;
-        }
-        const ex = exercises[currentIndex];
-        const isCorrect = (selectedOption === ex.correctIndex);
-        if (isCorrect) {
-            userScore++;
-            scoreSpan.innerText = userScore;
-        }
-        answered = true;
-        renderQuestion(); // re-render con feedback
-    }
-    
-    function nextQuestion() {
-        if (!answered) return;
-        // avanzar
-        currentIndex++;
-        selectedOption = null;
-        answered = false;
-        if (currentIndex >= exercises.length) {
-            renderQuestion(); // muestra final
-        } else {
-            renderQuestion();
-        }
-    }
-    
-    function resetAll() {
-        // reiniciar todo el set de ejercicios (nueva mezcla)
-        exercises = buildFullDeck();
-        currentIndex = 0;
-        userScore = 0;
-        selectedOption = null;
-        answered = false;
-        scoreSpan.innerText = "0";
-        renderQuestion();
-    }
-    
-    // inicializar
-    function init() {
-        exercises = buildFullDeck();
-        currentIndex = 0;
-        userScore = 0;
-        selectedOption = null;
-        answered = false;
-        renderQuestion();
-    }
-    
-    init();
-</script>
 </body>
 </html>

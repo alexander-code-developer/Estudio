@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Passive Voice Lab · Normalización perfecta + análisis detallado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #eef2f7;
+            padding: 1.8rem 1.2rem;
+        }
+        a { 
+            color: white;
+        }
+
+        .main-container {
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .theory-card {
+            background: linear-gradient(115deg, #1e3c5c 0%, #0f2c44 100%);
+            color: white;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.3);
+        }
+
+        .theory-card h1 {
+            font-size: 1.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .formula-box {
+            background: rgba(255,255,240,0.12);
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+
+        .example-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 0.8rem 0;
+        }
+
+        .example-badge {
+            background: #ffaa44;
+            color: #1e2f3a;
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .stats-bar {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .stats-item {
+            background: #ecf3fa;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1f4970;
+        }
+
+        .quiz-panel {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.6rem;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+
+        .active-sentence {
+            background: #eef3fc;
+            border-left: 6px solid #ff9142;
+            padding: 1.2rem;
+            border-radius: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .instruction {
+            font-weight: 600;
+            margin: 0.5rem 0;
+            color: #2c4e74;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border-radius: 1.2rem;
+            border: 1.5px solid #cfdfed;
+            font-family: monospace;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #ff9142;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1.2rem 0 1rem;
+        }
+
+        button {
+            background: #1f4a6e;
+            border: none;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #ff9142;
+            transform: translateY(-2px);
+        }
+
+        .btn-check {
+            background: #ff9142;
+        }
+
+        .feedback {
+            background: #f1f6fd;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 5px solid #ff9142;
+        }
+
+        .feedback.correct {
+            background: #e0f7e8;
+            border-left-color: #2e7d32;
+        }
+
+        .feedback.wrong {
+            background: #fff0ed;
+            border-left-color: #c7362b;
+        }
+
+        .diff-highlight {
+            background: #ffe0b3;
+            color: #b45f06;
+            font-weight: bold;
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+
+        .suggestion {
+            margin-top: 8px;
+            padding: 8px;
+            background: #fef7e0;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .completion {
+            text-align: center;
+            background: #deefe8;
+            border-radius: 1.5rem;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="theory-card">
+        <a href="index.html">REGRESAR AL PRINCIPAL</a>
+        <h1>🎤➡️📢 VOZ PASIVA · Presente Simple (is/are)</h1>
+        <p>Transforma oraciones activas a pasivas. <strong>Ahora con normalización inteligente:</strong> acepta <code>isn't</code> o <code>is not</code>, <code>aren't</code> o <code>are not</code>, sin importar mayúsculas, espacios o puntuación final.</p>
+        <div class="formula-box">
+            📌 <strong>Estructura:</strong> Sujeto + is/are (o negación) + participio + (by + agente)<br>
+            ✅ The meal is prepared by the chef.<br>
+            ❌ The meal isn't prepared / is not prepared.<br>
+            ❓ Is the meal prepared by the chef?
+        </div>
+        <div class="example-row">
+            <span class="example-badge">Activa: My mother doesn't bake a cake.</span>
+            <span class="example-badge">➡ Pasiva válida: "A cake isn't baked by my mother." o "A cake is not baked by my mother."</span>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stats-item">📋 Ejercicio <span id="currentIdxSpan">1</span> / <span id="totalExSpan">0</span></div>
+        <div class="stats-item">✅ Aciertos: <span id="scoreSpan">0</span></div>
+    </div>
+
+    <div class="quiz-panel" id="quizPanel"></div>
+</div>
+
+<script>
+    // ======================== NORMALIZACIÓN INTELIGENTE ========================
+    // Normaliza una oración para comparar sin ser demasiado estricto:
+    // - minúsculas
+    // - espacios múltiples a uno solo
+    // - elimina puntuación final (. ?)
+    // - convierte "isn't" -> "is not" y "aren't" -> "are not" (y viceversa para mostrar)
+    // pero para comparación, unificamos a forma expandida (is not / are not)
+    function normalizeForComparison(str) {
+        let normalized = str.toLowerCase().trim();
+        // eliminar puntuación final (. ?)
+        normalized = normalized.replace(/[.?]+$/, '');
+        // normalizar espacios múltiples
+        normalized = normalized.replace(/\s+/g, ' ');
+        // unificar contracciones negativas: isn't -> is not, aren't -> are not
+        normalized = normalized.replace(/\bisn't\b/g, 'is not');
+        normalized = normalized.replace(/\baren't\b/g, 'are not');
+        // también unificar formas sin contracción por si acaso (ya está bien)
+        // eliminar puntos en medio (por si los hay)
+        normalized = normalized.replace(/\./g, '');
+        return normalized;
+    }
+
+    // Comparación flexible que devuelve true si son equivalentes semánticamente
+    function isSemanticallyEqual(userAnswer, correctAnswer) {
+        const normUser = normalizeForComparison(userAnswer);
+        const normCorrect = normalizeForComparison(correctAnswer);
+        return normUser === normCorrect;
+    }
+
+    // ========== GENERACIÓN DE EJERCICIOS (más de 200) ==========
+    const affirmativeTemplates = [
+        { active: "The chef prepares the meal.", passiveBase: "The meal is prepared by the chef." },
+        { active: "The teacher corrects the exams.", passiveBase: "The exams are corrected by the teacher." },
+        { active: "My mother bakes a cake.", passiveBase: "A cake is baked by my mother." },
+        { active: "The company sells high-quality products.", passiveBase: "High-quality products are sold by the company." },
+        { active: "The cat catches the mouse.", passiveBase: "The mouse is caught by the cat." },
+        { active: "Emma writes a beautiful poem.", passiveBase: "A beautiful poem is written by Emma." },
+        { active: "The gardener waters the plants.", passiveBase: "The plants are watered by the gardener." },
+        { active: "The artist paints a portrait.", passiveBase: "A portrait is painted by the artist." },
+        { active: "The committee approves the budget.", passiveBase: "The budget is approved by the committee." },
+        { active: "The mechanic repairs the car.", passiveBase: "The car is repaired by the mechanic." },
+        { active: "Students read many books.", passiveBase: "Many books are read by students." },
+        { active: "The manager organizes the meeting.", passiveBase: "The meeting is organized by the manager." }
+    ];
+
+    const negativeTemplates = [
+        { active: "The chef doesn't prepare the meal.", passiveBase: "The meal isn't prepared by the chef." },
+        { active: "The teacher doesn't correct the exams.", passiveBase: "The exams aren't corrected by the teacher." },
+        { active: "My mother doesn't bake a cake.", passiveBase: "A cake isn't baked by my mother." },
+        { active: "The company doesn't sell fake products.", passiveBase: "Fake products aren't sold by the company." },
+        { active: "The cat doesn't catch the mouse.", passiveBase: "The mouse isn't caught by the cat." },
+        { active: "Emma doesn't write a poem.", passiveBase: "A poem isn't written by Emma." },
+        { active: "The gardener doesn't water the plants.", passiveBase: "The plants aren't watered by the gardener." },
+        { active: "The artist doesn't paint a portrait.", passiveBase: "A portrait isn't painted by the artist." },
+        { active: "The committee doesn't approve the budget.", passiveBase: "The budget isn't approved by the committee." },
+        { active: "Students don't read boring books.", passiveBase: "Boring books aren't read by students." }
+    ];
+
+    const questionTemplates = [
+        { active: "Does the chef prepare the meal?", passiveBase: "Is the meal prepared by the chef?" },
+        { active: "Does the teacher correct the exams?", passiveBase: "Are the exams corrected by the teacher?" },
+        { active: "Does my mother bake a cake?", passiveBase: "Is a cake baked by my mother?" },
+        { active: "Does the company sell eco-friendly products?", passiveBase: "Are eco-friendly products sold by the company?" },
+        { active: "Does the cat catch the mouse?", passiveBase: "Is the mouse caught by the cat?" },
+        { active: "Does Emma write a poem?", passiveBase: "Is a poem written by Emma?" },
+        { active: "Does the gardener water the plants daily?", passiveBase: "Are the plants watered daily by the gardener?" },
+        { active: "Do students read classic novels?", passiveBase: "Are classic novels read by students?" },
+        { active: "Does the waiter serve coffee?", passiveBase: "Is coffee served by the waiter?" }
+    ];
+
+    function generatePassiveExercises(total = 215) {
+        let exercises = [];
+        const allTemplates = [
+            ...affirmativeTemplates.map(t => ({ ...t, mode: 'affirmative' })),
+            ...negativeTemplates.map(t => ({ ...t, mode: 'negative' })),
+            ...questionTemplates.map(t => ({ ...t, mode: 'question' }))
+        ];
+        let idx = 0;
+        while (exercises.length < total) {
+            const base = allTemplates[idx % allTemplates.length];
+            let active = base.active;
+            let correct = base.passiveBase;
+            // pequeñas mutaciones para variedad
+            if (idx % 7 === 3 && active.includes("chef")) {
+                active = active.replace("chef", "cook");
+                correct = correct.replace("chef", "cook");
+            }
+            if (idx % 11 === 5 && active.includes("teacher")) {
+                active = active.replace("teacher", "professor");
+                correct = correct.replace("teacher", "professor");
+            }
+            if (idx % 13 === 2 && active.includes("poem")) {
+                active = active.replace("poem", "story");
+                correct = correct.replace("poem", "story");
+            }
+            exercises.push({
+                active: active,
+                correctPassive: correct,
+                mode: base.mode
+            });
+            idx++;
+        }
+        // mezclar
+        for (let i = exercises.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [exercises[i], exercises[j]] = [exercises[j], exercises[i]];
+        }
+        return exercises;
+    }
+
+    // ========== ANÁLISIS DETALLADO DE ERROR (señala exactamente la diferencia) ==========
+    function detailedMistakeAnalysis(userAnswer, correctAnswer, mode) {
+        const normalizedUser = normalizeForComparison(userAnswer);
+        const normalizedCorrect = normalizeForComparison(correctAnswer);
+        
+        if (normalizedUser === normalizedCorrect) {
+            return null; // no hay error
+        }
+        
+        let reasons = [];
+        // 1. Comparación carácter a carácter (normalizado) para encontrar la primera diferencia
+        let diffIndex = -1;
+        const maxLen = Math.max(normalizedUser.length, normalizedCorrect.length);
+        for (let i = 0; i < maxLen; i++) {
+            const charUser = normalizedUser[i] || '';
+            const charCorrect = normalizedCorrect[i] || '';
+            if (charUser !== charCorrect) {
+                diffIndex = i;
+                break;
+            }
+        }
+        
+        if (diffIndex !== -1) {
+            const snippetUser = normalizedUser.substring(Math.max(0, diffIndex-10), diffIndex+20);
+            const snippetCorrect = normalizedCorrect.substring(Math.max(0, diffIndex-10), diffIndex+20);
+            reasons.push(`🔍 Diferencia exacta cerca de: "${snippetUser}" vs debería ser "${snippetCorrect}".`);
+        }
+        
+        // 2. Verificar si el error es solo por usar contracción vs forma completa (ya normalizamos, pero si llegó aquí es que hay más diferencias)
+        const userHasContraction = userAnswer.includes("n't");
+        const correctHasContraction = correctAnswer.includes("n't");
+        if (userHasContraction !== correctHasContraction && normalizedUser === normalizedCorrect) {
+            // Este caso no debería ocurrir porque normalizamos, pero por si acaso
+            reasons.push("💡 Solo es una diferencia de formato (contracción vs forma completa). Ambas son correctas. Asegúrate de escribir exactamente como en el ejemplo o usa 'is not' / 'are not'.");
+        }
+        
+        // 3. Comprobaciones semánticas adicionales
+        if (mode === 'negative') {
+            if (!(userAnswer.includes("n't") || userAnswer.includes(" not "))) {
+                reasons.push("❌ La oración debe ser negativa: usa 'isn't' / 'is not' o 'aren't' / 'are not'.");
+            }
+        }
+        if (mode === 'question') {
+            if (!userAnswer.trim().endsWith('?')) {
+                reasons.push("❓ Olvidaste el signo de interrogación final '?'.");
+            }
+            if (!(userAnswer.trim().toLowerCase().startsWith("is") || userAnswer.trim().toLowerCase().startsWith("are"))) {
+                reasons.push("❓ La pregunta debe comenzar con 'Is' o 'Are'.");
+            }
+        }
+        
+        if (reasons.length === 0) {
+            reasons.push("⚠️ La respuesta no coincide exactamente. Revisa el orden: sujeto + is/are + participio + (by agente).");
+        }
+        
+        return reasons;
+    }
+
+    // ---------- VARIABLES GLOBALES ----------
+    let exercisesList = [];
+    let currentPos = 0;
+    let userScore = 0;
+    let currentAnswerChecked = false;
+    let userInputValue = "";
+    
+    const quizPanel = document.getElementById('quizPanel');
+    const currentIdxSpan = document.getElementById('currentIdxSpan');
+    const totalExSpan = document.getElementById('totalExSpan');
+    const scoreSpan = document.getElementById('scoreSpan');
+    
+    function renderCurrentQuestion() {
+        if (!exercisesList.length || currentPos >= exercisesList.length) {
+            quizPanel.innerHTML = `
+                <div class="completion">
+                    🎉 ¡Felicidades! Has completado todos los ${exercisesList.length} ejercicios.<br>
+                    <strong>Puntuación final: ${userScore} / ${exercisesList.length}</strong><br><br>
+                    <button id="fullResetBtn" style="background:#1f4a6e;">🔄 Reiniciar todos los ejercicios</button>
+                </div>
+            `;
+            const resetBtn = document.getElementById('fullResetBtn');
+            if (resetBtn) resetBtn.addEventListener('click', () => fullReset());
+            return;
+        }
+        
+        const ex = exercisesList[currentPos];
+        currentIdxSpan.innerText = currentPos + 1;
+        totalExSpan.innerText = exercisesList.length;
+        scoreSpan.innerText = userScore;
+        
+        let modeHint = "";
+        if (ex.mode === 'affirmative') modeHint = "👉 Transforma a voz pasiva AFIRMATIVA (usa is/are)";
+        else if (ex.mode === 'negative') modeHint = "❌ Transforma a voz pasiva NEGATIVA (usa isn't / aren't o is not / are not)";
+        else modeHint = "❓ Transforma a PREGUNTA en voz pasiva (Is/Are ... ?)";
+        
+        let html = `
+            <div class="active-sentence">
+                📢 <strong>Activa:</strong> ${ex.active}
+            </div>
+            <div class="instruction">${modeHint}</div>
+            <textarea id="passiveInput" rows="3" placeholder="Escribe la oración en voz pasiva...">${currentAnswerChecked ? userInputValue : ''}</textarea>
+            <div class="button-group">
+                <button id="checkAnswerBtn" class="btn-check">🔍 Verificar respuesta</button>
+                ${currentAnswerChecked ? '<button id="nextExerciseBtn" class="next-btn">➡ Siguiente ejercicio</button>' : ''}
+                <button id="resetGlobalBtn" style="background:#5f6c7a;">🔄 Reiniciar todo</button>
+            </div>
+        `;
+        
+        if (currentAnswerChecked) {
+            const isCorrect = isSemanticallyEqual(userInputValue, ex.correctPassive);
+            const feedbackClass = isCorrect ? 'correct' : 'wrong';
+            let detailedHtml = '';
+            if (!isCorrect) {
+                const mistakes = detailedMistakeAnalysis(userInputValue, ex.correctPassive, ex.mode);
+                detailedHtml = `<div class="suggestion"><strong>🔍 Análisis detallado de tu error:</strong><br>${mistakes.map(m => `• ${m}`).join('<br>')}</div>`;
+                detailedHtml += `<div class="suggestion"><strong>✅ Respuesta correcta (estándar):</strong><br> "${ex.correctPassive}"</div>`;
+                detailedHtml += `<div class="suggestion"><strong>💡 Nota:</strong> Se aceptan tanto "isn't" como "is not", "aren't" como "are not". Revisa mayúsculas y espacios.</div>`;
+            } else {
+                detailedHtml = `<div class="suggestion">🎉 ¡Perfecto! Tu respuesta es correcta (flexibilidad incluida).</div>`;
+            }
+            html += `
+                <div class="feedback ${feedbackClass}">
+                    ${isCorrect ? '✅ ¡Correcto!' : '❌ Incorrecto.'}
+                    ${detailedHtml}
+                </div>
+            `;
+        }
+        
+        quizPanel.innerHTML = html;
+        
+        // eventos
+        document.getElementById('checkAnswerBtn')?.addEventListener('click', checkPassiveAnswer);
+        document.getElementById('nextExerciseBtn')?.addEventListener('click', nextQuestion);
+        document.getElementById('resetGlobalBtn')?.addEventListener('click', fullReset);
+        
+        if (currentAnswerChecked) {
+            const textarea = document.getElementById('passiveInput');
+            if (textarea) textarea.value = userInputValue;
+        }
+    }
+    
+    function checkPassiveAnswer() {
+        if (currentAnswerChecked) return;
+        const textarea = document.getElementById('passiveInput');
+        if (!textarea) return;
+        const userAnswer = textarea.value.trim();
+        if (userAnswer === "") {
+            alert("Por favor escribe la oración en voz pasiva.");
+            return;
+        }
+        const ex = exercisesList[currentPos];
+        const isCorrect = isSemanticallyEqual(userAnswer, ex.correctPassive);
+        if (isCorrect) {
+            userScore++;
+            scoreSpan.innerText = userScore;
+        }
+        userInputValue = userAnswer;
+        currentAnswerChecked = true;
+        renderCurrentQuestion();
+    }
+    
+    function nextQuestion() {
+        if (!currentAnswerChecked) return;
+        currentPos++;
+        currentAnswerChecked = false;
+        userInputValue = "";
+        if (currentPos >= exercisesList.length) {
+            renderCurrentQuestion();
+        } else {
+            renderCurrentQuestion();
+        }
+    }
+    
+    function fullReset() {
+        exercisesList = generatePassiveExercises(215);
+        currentPos = 0;
+        userScore = 0;
+        currentAnswerChecked = false;
+        userInputValue = "";
+        scoreSpan.innerText = "0";
+        renderCurrentQuestion();
+    }
+    
+    function init() {
+        exercisesList = generatePassiveExercises(215);
+        currentPos = 0;
+        userScore = 0;
+        currentAnswerChecked = false;
+        userInputValue = "";
+        renderCurrentQuestion();
+    }
+    
+    init();
+</script>
+</body>
+</html>
