@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Relative Clauses & One/Ones · Guía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+        }
+        a {
+            color: white;
+        }
+
+        body {
+            background: #f1f5f9;
+            padding: 2rem 1.5rem;
+        }
+
+        /* contenedor principal */
+        .guide-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* header */
+        .main-header {
+            background: linear-gradient(135deg, #0b2b3b, #1a4a6e);
+            color: white;
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.2);
+        }
+
+        .main-header h1 {
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .main-header p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            max-width: 80%;
+        }
+
+        .badge-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .topic-badge {
+            background: rgba(255,255,240,0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* grid: teoría + ejemplos interactivos */
+        .theory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.6rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.1s ease;
+            border: 1px solid #e4edf5;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1f4a6e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rule-box {
+            background: #eef3fc;
+            border-left: 5px solid #ff9142;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+        }
+
+        .example-sentence {
+            background: #fef7e0;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            font-family: monospace;
+            font-size: 1rem;
+            margin: 0.7rem 0;
+            border-left: 4px solid #f4b942;
+        }
+
+        .video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e293b;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            transition: 0.2s;
+        }
+
+        .video-link:hover {
+            background: #ff9142;
+            transform: translateY(-2px);
+        }
+
+        /* sección interactiva de práctica corta */
+        .interactive-section {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+        }
+
+        .interactive-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #0f3b5c;
+        }
+
+        .quiz-mini {
+            background: #f9fafc;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .question-item {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #e2edf2;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .opt-btn {
+            background: #edf2f7;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: 0.1s;
+        }
+
+        .opt-btn.selected {
+            background: #2c6e9e;
+            color: white;
+            box-shadow: 0 2px 8px rgba(44,110,158,0.3);
+        }
+
+        .feedback-mini {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #ccc;
+        }
+
+        .correct-fb {
+            color: #2e7d32;
+            border-left-color: #2e7d32;
+        }
+
+        .wrong-fb {
+            color: #c0392b;
+            border-left-color: #c0392b;
+        }
+
+        .btn-check {
+            background: #ff9142;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .btn-reset-mini {
+            background: #5f7f9e;
+            margin-left: 0.5rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+        }
+
+        /* One/One explicación específica */
+        .one-box {
+            background: #e5f2ef;
+            border-radius: 1.2rem;
+            padding: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #5f6c7a;
+        }
+
+        @media (max-width: 850px) {
+            .theory-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            body {
+                padding: 1rem;
+            }
+            .main-header p {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .options {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="guide-wrapper">
+    <div class="main-header">
+        <h1>📘 Gramática visual: Relative Clauses & ONE/ONES</h1>
+        <p>Aprende cuándo usar <strong>Defining vs Non‑defining</strong>, cómo combinar oraciones y cuándo emplear <strong>one / ones</strong> para evitar repeticiones.</p>
+        <div class="badge-flex">
+            <span class="topic-badge">🔹 Defining (esencial)</span>
+            <span class="topic-badge">🔸 Non‑defining (información extra)</span>
+            <span class="topic-badge">📌 ONE / ONES (sustituir nombres)</span>
+        </div>
+         <a href="index.html">EJERCICIOS PICALE AQUI</a>
+    </div>
+
+    <div class="theory-grid">
+        <!-- DEFINING / NON-DEFINING -->
+        <div class="card">
+            <h2>📌 Defining vs Non‑defining</h2>
+            <div class="rule-box">
+                <strong>🔹 Defining relative clause</strong> — información <u>esencial</u> para identificar a quién o qué nos referimos. <strong>Sin comas</strong>. Si la omitimos, la oración pierde sentido o cambia.<br>
+                <div class="example-sentence">✔️ The book <strong>that/which</strong> I borrowed is fantastic. <em>(¿Qué libro? El que pedí prestado)</em></div>
+                <strong>🔸 Non‑defining relative clause</strong> — da información <u>extra</u> entre comas. No es necesaria para identificar. Se usa <strong>who/which</strong> (nunca "that").<br>
+                <div class="example-sentence">✔️ My sister, <strong>who</strong> lives in Madrid, is a doctor. <em>(Ya sé quién es mi hermana; solo añado dato)</em></div>
+            </div>
+            <div class="video-link" onclick="window.open('https://youtu.be/ibmMybaXq4U?si=JztlpTyOFzdssV3m', '_blank')">
+                ▶️ Ver video: Defining vs Non‑defining (BBC English)
+            </div>
+            <div class="video-link" style="background:#2d4a6e;" onclick="window.open('https://youtu.be/ezTizklj8Cg?si=rJ_u-PpogcmtlCKI', '_blank')">
+                🎬 Explicación con ejemplos claros
+            </div>
+        </div>
+
+        <!-- ONE / ONES explicación -->
+        <div class="card">
+            <h2>🔁 ONE / ONES · Evita repeticiones</h2>
+            <div class="one-box">
+                <p>Usamos <strong>one</strong> (singular) y <strong>ones</strong> (plural) para sustituir un nombre ya mencionado y evitar repetirlo.</p>
+                <div class="example-sentence">✨ I need a new jacket. This old <strong>one</strong> is torn. (singular)</div>
+                <div class="example-sentence">✨ I love red apples, but green <strong>ones</strong> are crunchier. (plural)</div>
+                <p><strong>⚠️ Importante:</strong> No se usa "one/ones" después de adjetivos posesivos (my, your) directamente, pero sí después de this/that/these/those o adjetivos.</p>
+                <div class="example-sentence">❌ I like your car, but I prefer my one. (incorrecto) → I prefer mine.</div>
+                <div class="example-sentence">✅ Which cookies? The chocolate <strong>ones</strong>.</div>
+            </div>
+            <div class="video-link" style="margin-top: 1rem;" onclick="window.open('https://youtu.be/MD20sh4357Y?si=6Vq4mGd0Ayq1lM9D', '_blank')">
+                📺 Video: ONE and ONES (práctica real)
+            </div>
+        </div>
+    </div>
+
+    <!-- ÁREA INTERACTIVA DE EJERCICIOS CORTOS PARA ENTENDER -->
+    <div class="interactive-section">
+        <div class="interactive-title">🧠 Pon a prueba tu comprensión</div>
+        <p>Selecciona la opción correcta para cada enunciado. Aprenderás distinguiendo Defining / Non‑defining y usando ONE/ONES.</p>
+
+        <div id="miniQuizContainer">
+            <!-- Los ejercicios se generarán con JS -->
+        </div>
+        <button id="checkAllBtn" class="btn-check" style="background:#2c6e9e;">✅ Verificar respuestas</button>
+        <button id="resetMiniQuiz" class="btn-check btn-reset-mini" style="background:#5f6c7a;">🔄 Reiniciar práctica</button>
+    </div>
+
+    <!-- Sección adicional combinación oraciones: mini comparativa -->
+    <div class="interactive-section" style="background:#fefcf5;">
+        <div class="interactive-title">✍️ ¿Defining o Non‑defining? Decídelo tú</div>
+        <div id="clauseTypeQuiz"></div>
+        <button id="checkTypeBtn" class="btn-check">🔍 Revisar mis elecciones</button>
+    </div>
+
+    <footer>
+        📘 Recursos extra: busca "Relative clauses game" o "One ones exercise". ¡Practica con la primera herramienta de 200+ ejercicios!
+    </footer>
+</div>
+
+<script>
+    // ---- EJERCICIOS MINIQUIZ: Relative clause (definiendo cuándo) y ONE/ONES -----
+    const miniQuestions = [
+        {
+            text: "📖 'The house ______ I was born is very old.' (elige el pronombre correcto)",
+            options: ["which", "where", "who", "when"],
+            correct: 1,
+            explanation: "'where' porque se refiere a un lugar (the house, el lugar donde nací).",
+            type: "relative"
+        },
+        {
+            text: "🔹 'My brother, ______ works at Google, just got promoted.' (defining o non‑defining, elige el pronombre correcto)",
+            options: ["who", "which", "that", "whose"],
+            correct: 0,
+            explanation: "Cláusula no definitoria (comas) → se usa 'who' para persona, nunca 'that' en non‑defining.",
+            type: "relative"
+        },
+        {
+            text: "⚡ 'I don't like these shoes. I prefer the blue ______ .' (one / ones)",
+            options: ["one", "ones", "them", "it"],
+            correct: 0,
+            explanation: "'shoe' singular, sustituimos por 'one'.",
+            type: "oneones"
+        },
+        {
+            text: "🍎 'These apples are fresh, but the green ______ are sour.' (one / ones)",
+            options: ["one", "ones", "those", "apples"],
+            correct: 1,
+            explanation: "'apples' plural → 'ones'.",
+            type: "oneones"
+        },
+        {
+            text: "📚 'The novel, ______ was written in 1920, became a classic.' (non‑defining, pronoun)",
+            options: ["that", "which", "who", "whose"],
+            correct: 1,
+            explanation: "Non‑defining: se usa 'which' para cosas, con comas; 'that' no es correcto aquí.",
+            type: "relative"
+        },
+        {
+            text: "🏠 'The woman ______ dog barked all night apologized.' (relative pronoun)",
+            options: ["who", "whose", "which", "whom"],
+            correct: 1,
+            explanation: "'whose' indica posesión: el perro de la mujer.",
+            type: "relative"
+        },
+        {
+            text: "👟 'These trainers are old. I need new ______ .' (one/ones)",
+            options: ["ones", "one", "them", "these"],
+            correct: 0,
+            explanation: "plural (trainers) → 'ones'.",
+            type: "oneones"
+        }
+    ];
+
+    // segundo bloque: identificar si la oración es defining o non‑defining (para entender la estructura)
+    const typeQuestions = [
+        {
+            sentence: "The students who study hard will pass the exam.",
+            correctType: "defining",
+            explanation: "No hay comas, la información 'who study hard' es esencial para saber qué estudiantes pasarán."
+        },
+        {
+            sentence: "London, which is the capital of England, is very crowded.",
+            correctType: "nondefining",
+            explanation: "Información extra entre comas, no es necesaria para identificar Londres."
+        },
+        {
+            sentence: "My car that has a broken window is in the garage.",
+            correctType: "defining",
+            explanation: "Especifica qué coche (el que tiene la ventana rota). Sin comas."
+        },
+        {
+            sentence: "My mother, who is 65 years old, still works.",
+            correctType: "nondefining",
+            explanation: "Comas alrededor, información adicional sobre mi madre."
+        },
+        {
+            sentence: "The book which I bought yesterday is thrilling.",
+            correctType: "defining",
+            explanation: "Define qué libro (el que compré ayer). En inglés moderno también podría ser 'that'."
+        }
+    ];
+
+    // renderizar miniquiz 1 (selección múltiple)
+    function renderMiniQuiz() {
+        const container = document.getElementById('miniQuizContainer');
+        if (!container) return;
+        let html = '';
+        miniQuestions.forEach((q, idx) => {
+            const userSelected = window.userAnswers ? window.userAnswers[idx] : undefined;
+            const selectedVal = (userSelected !== undefined) ? userSelected : null;
+            html += `
+                <div class="question-item" data-qidx="${idx}">
+                    <div class="question-text">${q.text}</div>
+                    <div class="options" id="optGroup-${idx}">
+            `;
+            q.options.forEach((opt, optIdx) => {
+                const isSelected = (selectedVal === optIdx);
+                html += `<button class="opt-btn ${isSelected ? 'selected' : ''}" data-qid="${idx}" data-opt="${optIdx}">${opt}</button>`;
+            });
+            html += `</div><div class="feedback-mini" id="fb-mini-${idx}"></div></div>`;
+        });
+        container.innerHTML = html;
+        attachMiniEvents();
+    }
+
+    function attachMiniEvents() {
+        // añadir eventos a los botones de opciones
+        for (let i = 0; i < miniQuestions.length; i++) {
+            const btns = document.querySelectorAll(`.opt-btn[data-qid="${i}"]`);
+            btns.forEach(btn => {
+                btn.removeEventListener('click', miniClickHandler);
+                btn.addEventListener('click', miniClickHandler);
+            });
+        }
+    }
+
+    function miniClickHandler(e) {
+        const btn = e.currentTarget;
+        const qid = parseInt(btn.dataset.qid);
+        const optVal = parseInt(btn.dataset.opt);
+        if (!window.userAnswers) window.userAnswers = new Array(miniQuestions.length).fill(null);
+        window.userAnswers[qid] = optVal;
+        // actualizar estilo visual dentro del grupo
+        const groupDiv = document.getElementById(`optGroup-${qid}`);
+        if (groupDiv) {
+            const allOpts = groupDiv.querySelectorAll('.opt-btn');
+            allOpts.forEach(opt => opt.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+        // limpiar feedback previo
+        const fbDiv = document.getElementById(`fb-mini-${qid}`);
+        if (fbDiv) fbDiv.innerHTML = '';
+    }
+
+    function checkMiniAnswers() {
+        if (!window.userAnswers) window.userAnswers = new Array(miniQuestions.length).fill(null);
+        let correctCount = 0;
+        for (let i = 0; i < miniQuestions.length; i++) {
+            const userChoice = window.userAnswers[i];
+            const q = miniQuestions[i];
+            const fbDiv = document.getElementById(`fb-mini-${i}`);
+            if (fbDiv) {
+                if (userChoice === undefined || userChoice === null) {
+                    fbDiv.innerHTML = '⚠️ No has seleccionado respuesta.';
+                    fbDiv.className = 'feedback-mini wrong-fb';
+                } else if (userChoice === q.correct) {
+                    fbDiv.innerHTML = `✅ Correcto. ${q.explanation}`;
+                    fbDiv.className = 'feedback-mini correct-fb';
+                    correctCount++;
+                } else {
+                    const correctAnswerText = q.options[q.correct];
+                    fbDiv.innerHTML = `❌ Incorrecto. Respuesta correcta: "${correctAnswerText}". ${q.explanation}`;
+                    fbDiv.className = 'feedback-mini wrong-fb';
+                }
+            }
+        }
+        alert(`📊 Resultados: ${correctCount} de ${miniQuestions.length} correctos. Revisa los comentarios.`);
+    }
+
+    // ---------- Bloque de identificación Defining / Non-defining (tipo de cláusula) ----------
+    let userClauseAnswers = []; // array de strings "defining" o "nondefining"
+
+    function renderClauseQuiz() {
+        const container = document.getElementById('clauseTypeQuiz');
+        if (!container) return;
+        let html = '';
+        typeQuestions.forEach((item, idx) => {
+            const saved = window.userClauseAnswers ? window.userClauseAnswers[idx] : null;
+            html += `
+                <div class="question-item" data-typeidx="${idx}">
+                    <div class="question-text">📝 Oración: <strong>"${item.sentence}"</strong></div>
+                    <div class="options" id="typeGroup-${idx}">
+                        <button class="opt-btn ${saved === 'defining' ? 'selected' : ''}" data-typeidx="${idx}" data-choice="defining">🔹 Defining (esencial)</button>
+                        <button class="opt-btn ${saved === 'nondefining' ? 'selected' : ''}" data-typeidx="${idx}" data-choice="nondefining">🔸 Non‑defining (extra / comas)</button>
+                    </div>
+                    <div class="feedback-mini" id="fb-type-${idx}"></div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+        attachTypeEvents();
+    }
+
+    function attachTypeEvents() {
+        for (let i = 0; i < typeQuestions.length; i++) {
+            const btns = document.querySelectorAll(`.opt-btn[data-typeidx="${i}"]`);
+            btns.forEach(btn => {
+                btn.removeEventListener('click', typeClickHandler);
+                btn.addEventListener('click', typeClickHandler);
+            });
+        }
+    }
+
+    function typeClickHandler(e) {
+        const btn = e.currentTarget;
+        const idx = parseInt(btn.dataset.typeidx);
+        const choice = btn.dataset.choice; // "defining" o "nondefining"
+        if (!window.userClauseAnswers) window.userClauseAnswers = new Array(typeQuestions.length).fill(null);
+        window.userClauseAnswers[idx] = choice;
+        // actualizar estilos en el grupo
+        const groupDiv = document.getElementById(`typeGroup-${idx}`);
+        if (groupDiv) {
+            const allOptions = groupDiv.querySelectorAll('.opt-btn');
+            allOptions.forEach(opt => opt.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+        const fbDiv = document.getElementById(`fb-type-${idx}`);
+        if (fbDiv) fbDiv.innerHTML = '';
+    }
+
+    function checkTypeAnswers() {
+        if (!window.userClauseAnswers) window.userClauseAnswers = new Array(typeQuestions.length).fill(null);
+        let correct = 0;
+        for (let i = 0; i < typeQuestions.length; i++) {
+            const userChoice = window.userClauseAnswers[i];
+            const correctType = typeQuestions[i].correctType;
+            const fbDiv = document.getElementById(`fb-type-${i}`);
+            if (fbDiv) {
+                if (!userChoice) {
+                    fbDiv.innerHTML = '⚠️ Selecciona una opción (Defining o Non‑defining).';
+                    fbDiv.className = 'feedback-mini wrong-fb';
+                } else if (userChoice === correctType) {
+                    fbDiv.innerHTML = `✅ ¡Correcto! ${typeQuestions[i].explanation}`;
+                    fbDiv.className = 'feedback-mini correct-fb';
+                    correct++;
+                } else {
+                    fbDiv.innerHTML = `❌ Incorrecto. La oración es ${correctType === 'defining' ? 'Defining (esencial)' : 'Non‑defining (información extra)'}. ${typeQuestions[i].explanation}`;
+                    fbDiv.className = 'feedback-mini wrong-fb';
+                }
+            }
+        }
+        alert(`🎯 Clasificación de cláusulas: ${correct} de ${typeQuestions.length} aciertos. Revisa los detalles.`);
+    }
+
+    function resetMiniQuizAndTypes() {
+        window.userAnswers = new Array(miniQuestions.length).fill(null);
+        window.userClauseAnswers = new Array(typeQuestions.length).fill(null);
+        renderMiniQuiz();
+        renderClauseQuiz();
+        // limpiar feedbacks extra
+        for (let i = 0; i < miniQuestions.length; i++) {
+            const fb = document.getElementById(`fb-mini-${i}`);
+            if (fb) fb.innerHTML = '';
+        }
+        for (let i = 0; i < typeQuestions.length; i++) {
+            const fb = document.getElementById(`fb-type-${i}`);
+            if (fb) fb.innerHTML = '';
+        }
+    }
+
+    // inicializar toda la página
+    function initInteractive() {
+        window.userAnswers = new Array(miniQuestions.length).fill(null);
+        window.userClauseAnswers = new Array(typeQuestions.length).fill(null);
+        renderMiniQuiz();
+        renderClauseQuiz();
+
+        const checkBtn = document.getElementById('checkAllBtn');
+        if (checkBtn) checkBtn.addEventListener('click', checkMiniAnswers);
+        const resetBtn = document.getElementById('resetMiniQuiz');
+        if (resetBtn) resetBtn.addEventListener('click', resetMiniQuizAndTypes);
+        const checkTypeBtn = document.getElementById('checkTypeBtn');
+        if (checkTypeBtn) checkTypeBtn.addEventListener('click', checkTypeAnswers);
+    }
+
+    initInteractive();
+</script>
+</body>
+</html>
